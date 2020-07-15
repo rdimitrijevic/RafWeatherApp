@@ -8,6 +8,9 @@ interface ForecastContract {
 
         val state: LiveData<ForecastState>
 
+        fun fetchByCityForDays(city: String, days: Int)
+        fun getByCityForDays(city: String, days: Int)
+        fun getById(cityId: Long)
 
     }
 

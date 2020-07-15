@@ -9,19 +9,28 @@ import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.modules.coreModule
+import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.modules.forecastModule
 import timber.log.Timber
 
 class RafWeatherApp : Application() {
 
-    fun init() {
+    override fun onCreate() {
+        super.onCreate()
+
+        init()
+        initKoin()
+    }
+
+    private fun init() {
         Timber.plant(Timber.DebugTree())
         Stetho.initializeWithDefaults(this)
     }
 
-    fun initKoin() {
+    private fun initKoin() {
 
         val modules = listOf(
-            coreModule
+            coreModule,
+            forecastModule
         )
 
         startKoin {
