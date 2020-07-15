@@ -15,6 +15,9 @@ data class ForecastEntity(
     val latitude: Double,
     val date: String,
 
+    @ColumnInfo(name = "avg_temp")
+    val averageTemp: Double,
+
     @ColumnInfo(name = "max_temp")
     val maxTemp: Double,
 

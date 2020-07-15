@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.models.Resource
 import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.repositories.ForecastRepository
 import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.presentation.contract.ForecastContract
-import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.presentation.contract.ForecastState
+import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.presentation.state.ForecastState
 import timber.log.Timber
 
 class ForecastViewModel(
@@ -29,11 +29,12 @@ class ForecastViewModel(
                 {
                     when (it) {
                         is Resource.Loading -> state.value = ForecastState.Loading
-                        is Resource.Success -> state.value = ForecastState.ForecastFetched
+                        is Resource.Success -> state.value =
+                            ForecastState.ForecastFetched(city, days)
                     }
                 },
                 {
-                    state.value = ForecastState.Error(it.localizedMessage ?: "Error while fetching")
+                    state.value = ForecastState.Error(it.message ?: "Error while fetching")
                 }
             )
 
@@ -55,7 +56,7 @@ class ForecastViewModel(
                     }
                 },
                 {
-                    state.value = ForecastState.Error(it.localizedMessage ?: "Database error")
+                    state.value = ForecastState.Error(it.message ?: "Database error")
                 }
             )
 

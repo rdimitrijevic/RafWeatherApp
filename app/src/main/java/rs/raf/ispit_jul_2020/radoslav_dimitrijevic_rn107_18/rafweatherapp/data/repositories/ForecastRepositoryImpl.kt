@@ -7,6 +7,7 @@ import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.d
 import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.models.Resource
 import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.models.room.ForecastEntity
 import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.models.ui.Forecast
+import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.models.ui.ForecastDetails
 import timber.log.Timber
 
 class ForecastRepositoryImpl(
@@ -30,6 +31,7 @@ class ForecastRepositoryImpl(
                             city = cityName,
                             latitude = lat,
                             longitude = lon,
+                            averageTemp = it.stats.averageTemp,
                             minTemp = it.stats.minTemp,
                             maxTemp = it.stats.maxTemp,
                             windSpeed = it.stats.windSpeed,
@@ -58,30 +60,28 @@ class ForecastRepositoryImpl(
                     Forecast(
                         id = it.id,
                         city = it.city,
+                        averageTemp = it.averageTemp,
                         date = it.date,
-                        maxTemp = it.maxTemp,
-                        minTemp = it.minTemp,
-                        windSpeed = it.windSpeed,
-                        uvQuotient = it.uvQuotient,
                         imageURL = it.imgURL
                     )
                 })
             }
     }
 
-    override fun getById(id: Long): Single<Resource<Forecast>> {
+    override fun getById(id: Long): Single<Resource<ForecastDetails>> {
         Timber.e("repo: Getting by id")
         return localDataSource.getById(id)
             .map {
-                val res = Forecast(
+                val res = ForecastDetails(
                     id = it.id,
                     city = it.city,
+                    lon = it.longitude,
+                    lat = it.latitude,
                     date = it.date,
                     maxTemp = it.maxTemp,
                     minTemp = it.minTemp,
                     windSpeed = it.windSpeed,
-                    uvQuotient = it.uvQuotient,
-                    imageURL = it.imgURL
+                    uvQuotient = it.uvQuotient
                 )
 
                 Resource.Success(res)

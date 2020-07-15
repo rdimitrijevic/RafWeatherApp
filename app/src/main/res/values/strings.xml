@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">RafWeatherApp</string>
+    <string name="btn_search_str">Search</string>
+    <string name="hint_city_tf">Fill in city name...</string>
+    <string name="hint_days_tf">Fill in number of days(1-10)...</string>
+    <string name="title_activity_details">Map</string>
+    <string name="uv_radiation">UV radiation:</string>
+    <string name="wind_speed">Wind speed:</string>
+    <string name="daily_minimum">Daily minimum:</string>
+    <string name="daily_maximum">Daily maximum:</string>
 </resources>

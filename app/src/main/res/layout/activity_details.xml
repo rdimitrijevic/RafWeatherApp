@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintBottom_toTopOf="@id/details_box"
+        tools:context=".presentation.view.activity.DetailsActivity" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/details_box"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/map"
+        android:background="@drawable/background_search"
+        android:padding="10dp"
+        android:layout_margin="10dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/city_date_tf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:textSize="28sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/max_temp_tf" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/max_temp_tf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_maximum"
+            android:textAlignment="viewStart"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/city_date_tf"
+            app:layout_constraintBottom_toTopOf="@id/min_temp_tf" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/min_temp_tf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_minimum"
+            android:textAlignment="viewStart"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/max_temp_tf"
+            app:layout_constraintBottom_toTopOf="@id/wind_speed_tf" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wind_speed_tf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wind_speed"
+            android:textAlignment="viewStart"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/min_temp_tf"
+            app:layout_constraintBottom_toTopOf="@id/uv_tf" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/uv_tf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/uv_radiation"
+            android:textSize="27sp"
+            android:textAlignment="viewStart"
+            app:layout_constraintTop_toBottomOf="@id/wind_speed_tf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

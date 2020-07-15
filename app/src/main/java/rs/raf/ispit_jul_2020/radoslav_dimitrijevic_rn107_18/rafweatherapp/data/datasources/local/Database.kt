@@ -7,7 +7,7 @@ import rs.raf.ispit_jul_2020.radoslav_dimitrijevic_rn107_18.rafweatherapp.data.m
 
 @Database(
     entities = [ForecastEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters()

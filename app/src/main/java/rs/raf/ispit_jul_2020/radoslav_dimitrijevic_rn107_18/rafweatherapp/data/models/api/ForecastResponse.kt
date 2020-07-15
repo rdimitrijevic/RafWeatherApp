@@ -47,6 +47,9 @@ data class TemperatureResponse(
     @Json(name = "mintemp_c")
     val minTemp: Double,
 
+    @Json(name = "avgtemp_c")
+    val averageTemp: Double,
+
     @Json(name = "maxwind_kph")
     val windSpeed: Double,
 
